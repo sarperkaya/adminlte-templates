@@ -1,37 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>Edit $MODEL_NAME_HUMAN$</h1>
+    <div class="container-fluid">
+        @include('layouts.page_title', ['title' => 'Edit $MODEL_NAME_HUMAN$'])
+
+        @include('common.errors')
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        {!! Form::model($$MODEL_NAME_CAMEL$, ['route' => ['$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.update', $$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$], 'method' => 'patch'$FILES$]) !!}
+                            @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.fields')
+
+                            <!-- Submit Field -->
+                            <div class="form-group col-sm-12 mt-3">
+                                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                                <!-- Submit Field -->
+                                <div class="form-group col-sm-12 mt-3">
+                                    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                                    <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}" class="btn btn-secondary">Cancel</a>
+                                </div>
+                            </div>
+                        {!! Form::close() !!}
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <div class="content px-3">
-
-        @include('adminlte-templates::common.errors')
-
-        <div class="card">
-
-            {!! Form::model($$MODEL_NAME_CAMEL$, ['route' => ['$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.update', $$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$], 'method' => 'patch'$FILES$]) !!}
-
-            <div class="card-body">
-                <div class="row">
-                    @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.fields')
-                </div>
-            </div>
-
-            <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}" class="btn btn-default">Cancel</a>
-            </div>
-
-            {!! Form::close() !!}
-
         </div>
     </div>
 @endsection
