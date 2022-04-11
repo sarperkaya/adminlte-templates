@@ -1,41 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>$MODEL_NAME_PLURAL_HUMAN$</h1>
-                </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.create') }}">
-                        Add New
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="content px-3">
-
+    <div class="container-fluid">
+        @include('layouts.page_title', ['title' => '$MODEL_NAME_PLURAL_HUMAN$'])
         @include('flash::message')
 
-        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            <div class="col-xl-12">
+                                <div class="text-xl-end mt-xl-0 mt-2">
+                                    <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.create') }}" class="btn btn-primary mb-2 me-2"><i class="mdi mdi-plus"></i> $MODEL_NAMEL_HUMAN$</a>
+                                </div>
+                            </div>
+                        </div>
 
-        <div class="card">
-            <div class="card-body p-0">
-                @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.table')
-
-                <div class="card-footer clearfix">
-                    <div class="float-right">
-                        $PAGINATE$
+                        @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.table')
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
 @endsection
 

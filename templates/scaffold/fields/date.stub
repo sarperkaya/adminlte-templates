@@ -1,15 +1,5 @@
 <!-- $FIELD_NAME_TITLE$ Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
-    {!! Form::text('$FIELD_NAME$', null, ['class' => 'form-control','id'=>'$FIELD_NAME$']) !!}
+    {!! Form::text('$FIELD_NAME$', null, ['class' => 'form-control','id'=>'$FIELD_NAME$', 'data-provide'=>'datepicker', 'data-date-autoclose'=>'true', 'data-date-container'=>'#datepicker4']) !!}
 </div>
-
-@push('page_scripts')
-    <script type="text/javascript">
-        $('#$FIELD_NAME$').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
-            useCurrent: true,
-            sideBySide: true
-        })
-    </script>
-@endpush
